@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://levels/Level_Tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://levels/Blocks.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/GeneratedLevel.gd" type="Script" id=3]
+[ext_resource path="res://player/TopDownPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/Generator.gd" type="Script" id=6]
+[ext_resource path="res://levels/Elevator.gd" type="Script" id=7]
+[ext_resource path="res://levels/ResultMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/Jump03.wav" type="AudioStream" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 64, 64 )
+
+[node name="GeneratedLevel" type="Node"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="ResultMenu" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="Blocks" parent="." instance=ExtResource( 2 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 4, 4 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="ItemFolder" type="Node" parent="."]
+
+[node name="SpawnFolder" type="Node" parent="."]
+
+[node name="ZombieFolder" type="Node" parent="."]
+
+[node name="Elevator" type="Area2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator"]
+shape = SubResource( 1 )
+
+[node name="Generator" type="Area2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Generator"]
+shape = SubResource( 2 )
+
+[node name="GeneratorSound" type="AudioStreamPlayer2D" parent="Generator"]
+stream = ExtResource( 9 )
+
+[node name="TopDownPlayer" parent="." instance=ExtResource( 4 )]
+position = Vector2( 192, 192 )
+
+[connection signal="place_spawnpoint" from="Blocks" to="." method="_on_Blocks_place_spawnpoint"]
+[connection signal="set_elevator_position" from="Blocks" to="." method="_on_Blocks_set_elevator_position"]
+[connection signal="set_generator_position" from="Blocks" to="." method="_on_Blocks_set_generator_position"]
+[connection signal="spawn_fuel_can" from="Blocks" to="." method="_on_Blocks_spawn_fuel_can"]

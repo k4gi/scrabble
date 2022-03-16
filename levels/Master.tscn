@@ -1,0 +1,153 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://levels/Master.gd" type="Script" id=1]
+[ext_resource path="res://assets/scorefont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://printscreen/Printscreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/style9_active.png" type="Texture" id=5]
+
+[node name="Master" type="Node"]
+script = ExtResource( 1 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="Printscreen" parent="." instance=ExtResource( 3 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -250.0
+margin_right = 300.0
+margin_bottom = 250.0
+theme = ExtResource( 4 )
+texture = ExtResource( 5 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = -50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/NinePatchRect/Margin"]
+margin_right = 500.0
+margin_bottom = 400.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_right = 500.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 2 )
+text = "Scrabble"
+align = 1
+
+[node name="Spacer" type="Control" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_top = 43.0
+margin_right = 500.0
+margin_bottom = 91.0
+rect_min_size = Vector2( 0, 48 )
+
+[node name="Label2" type="Label" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_top = 91.0
+margin_right = 500.0
+margin_bottom = 113.0
+text = "You're riding the elevator into the depths..."
+align = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_top = 113.0
+margin_right = 500.0
+margin_bottom = 135.0
+text = "But it's stopped running! And the zombies are coming!"
+align = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_top = 135.0
+margin_right = 500.0
+margin_bottom = 157.0
+text = "You need to find the generator on this level"
+align = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_top = 157.0
+margin_right = 500.0
+margin_bottom = 179.0
+text = "and fill it with enough fuel to get the elevator running again."
+align = 1
+
+[node name="Spacer2" type="Control" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_top = 179.0
+margin_right = 500.0
+margin_bottom = 227.0
+rect_min_size = Vector2( 0, 48 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_top = 227.0
+margin_right = 500.0
+margin_bottom = 249.0
+text = "Controls:"
+align = 1
+
+[node name="Label7" type="Label" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_top = 249.0
+margin_right = 500.0
+margin_bottom = 271.0
+text = "Movement with WASD"
+align = 1
+
+[node name="Label8" type="Label" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_top = 271.0
+margin_right = 500.0
+margin_bottom = 293.0
+text = "Start generator with E"
+align = 1
+
+[node name="Label9" type="Label" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_top = 293.0
+margin_right = 500.0
+margin_bottom = 315.0
+text = "Attack with Left Mouse Button"
+align = 1
+
+[node name="Label10" type="Label" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+margin_top = 315.0
+margin_right = 500.0
+margin_bottom = 337.0
+text = "Aim gun with Right Mouse Button"
+align = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/NinePatchRect/Margin/VBox"]
+pause_mode = 2
+margin_left = 206.0
+margin_top = 348.0
+margin_right = 294.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 0, 52 )
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "Play game"
+
+[connection signal="pressed" from="CanvasLayer/NinePatchRect/Margin/VBox/Button" to="." method="_on_Button_pressed"]

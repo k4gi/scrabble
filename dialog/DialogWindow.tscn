@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/style9_active.png" type="Texture" id=1]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=4]
+[ext_resource path="res://dialog/DialogWindow.gd" type="Script" id=5]
+
+[node name="DialogWindow" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Padding1" type="Control" parent="VBox"]
+margin_right = 1024.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 64 )
+
+[node name="Dialog" type="NinePatchRect" parent="VBox"]
+margin_left = 392.0
+margin_top = 64.0
+margin_right = 632.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 240, 176 )
+size_flags_horizontal = 4
+texture = ExtResource( 1 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="VBox/Dialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="HBoxContainer" parent="VBox/Dialog/VBox"]
+margin_right = 240.0
+margin_bottom = 22.0
+
+[node name="Icon" type="TextureRect" parent="VBox/Dialog/VBox/Header"]
+margin_bottom = 22.0
+
+[node name="Name" type="Label" parent="VBox/Dialog/VBox/Header"]
+margin_right = 125.0
+margin_bottom = 22.0
+text = "Name Goes Here"
+
+[node name="Content" type="HBoxContainer" parent="VBox/Dialog/VBox"]
+margin_top = 22.0
+margin_right = 240.0
+margin_bottom = 176.0
+size_flags_vertical = 3
+
+[node name="Padding1" type="Control" parent="VBox/Dialog/VBox/Content"]
+margin_right = 8.0
+margin_bottom = 154.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="Text" type="Label" parent="VBox/Dialog/VBox/Content"]
+margin_left = 8.0
+margin_right = 232.0
+margin_bottom = 154.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Body of text goes here"
+autowrap = true
+
+[node name="Padding2" type="Control" parent="VBox/Dialog/VBox/Content"]
+margin_left = 232.0
+margin_right = 240.0
+margin_bottom = 154.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="Footer" type="HBoxContainer" parent="VBox/Dialog/VBox"]
+visible = false
+margin_top = 128.0
+margin_right = 240.0
+margin_bottom = 176.0
+size_flags_vertical = 10
+
+[node name="Prompt" type="Label" parent="VBox/Dialog/VBox/Footer"]
+margin_left = 135.0
+margin_top = 17.0
+margin_right = 192.0
+margin_bottom = 31.0
+size_flags_horizontal = 10
+text = "continue..."
+
+[node name="Icon" type="TextureRect" parent="VBox/Dialog/VBox/Footer"]
+margin_left = 192.0
+margin_right = 240.0
+margin_bottom = 48.0
+
+[node name="Padding2" type="Control" parent="VBox"]
+margin_top = 240.0
+margin_right = 1024.0
+margin_bottom = 272.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="VBoxChoices" type="VBoxContainer" parent="VBox"]
+margin_top = 272.0
+margin_right = 1024.0
+margin_bottom = 272.0
