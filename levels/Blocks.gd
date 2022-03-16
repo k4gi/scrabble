@@ -8,9 +8,11 @@ const GENERATOR_ID = 9
 const SPAWNPOINT_ID = 10
 const BLOCK_SIZE = [6,6]
 
+
 var CORRIDOR_LENGTH = 5
 var ROOM_LENGTH = 5
 var FUEL_CAN_CHANCE = 8
+var desired_fuel_cans = 5
 
 
 onready var corridors = $Corridors.get_children()
@@ -81,6 +83,8 @@ func generate_level(level_tilemap):
 	#and we have basic, probably boring, world gen! yay
 	#get the autotiling working nice
 	level_tilemap.update_bitmask_region(level_tilemap.get_used_rect().position, level_tilemap.get_used_rect().end)
+	#new item spawning down here
+	spawn_desired_fuel_cans(level_tilemap)
 	#should probably get out of the way of the real level
 	queue_free()
 
@@ -108,12 +112,28 @@ func place_block(level_tilemap, block, coords, variant):
 			"corridor":
 				pass
 			"room":
-				if !special and tile_id == FLOOR_ID and \
-					tile.x != 0 and tile.x != BLOCK_SIZE[0]-1 and \
-					tile.y != 0 and tile.y != BLOCK_SIZE[1]-1 and \
-					randi()%FUEL_CAN_CHANCE == 0:
-						emit_signal("spawn_fuel_can", level_tilemap.map_to_world(Vector2(tile_x, tile_y))*level_tilemap.get_scale())
-						special = true
+				pass
+#				if !special and tile_id == FLOOR_ID and \
+#					tile.x != 0 and tile.x != BLOCK_SIZE[0]-1 and \
+#					tile.y != 0 and tile.y != BLOCK_SIZE[1]-1 and \
+#					randi()%FUEL_CAN_CHANCE == 0:
+#						emit_signal("spawn_fuel_can", level_tilemap.map_to_world(Vector2(tile_x, tile_y))*level_tilemap.get_scale())
+#						special = true
+
+
+func spawn_desired_fuel_cans(level_tilemap):
+	print(level_tilemap.get_used_rect())
+	var placed_cans = []
+	var topleft = level_tilemap.get_used_rect().position
+	var bottomright = level_tilemap.get_used_rect().end
+	var rect_range = bottomright - topleft
+	for each_can in range(desired_fuel_cans):
+		var can_pos_x = randi()%int(rect_range.x) - int(topleft.x)
+		var can_pos_y = randi()%int(rect_range.y) - int(topleft.y)
+		while level_tilemap.get_cell(can_pos_x, can_pos_y) != FLOOR_ID:
+			can_pos_x = randi()%int(rect_range.x) - int(topleft.x)
+			can_pos_y = randi()%int(rect_range.y) - int(topleft.y)
+		emit_signal("spawn_fuel_can", level_tilemap.map_to_world(Vector2(can_pos_x, can_pos_y))*level_tilemap.get_scale())
 
 
 func find_adjacent_gaps(filled_rooms, viewpoint_rooms): #?
