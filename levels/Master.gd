@@ -26,7 +26,7 @@ func _ready():
 	EventJug.connect("zombie_killed", self, "_on_zombie_killed")
 
 
-func _on_Button_pressed():
+func _on_PlayButton_pressed():
 	MainMenu.queue_free()
 	load_level()
 

@@ -1,0 +1,243 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/scorefont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/style9_active.png" type="Texture" id=2]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=3]
+[ext_resource path="res://menu/ControlSetting.tscn" type="PackedScene" id=4]
+[ext_resource path="res://menu/ControlsMenu.gd" type="Script" id=5]
+[ext_resource path="res://assets/dialogfont.tres" type="DynamicFont" id=6]
+
+[node name="ControlsMenu" type="NinePatchRect"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -250.0
+margin_right = 300.0
+margin_bottom = 250.0
+theme = ExtResource( 3 )
+texture = ExtResource( 2 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = -50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+margin_right = 500.0
+margin_bottom = 400.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Margin/VBox"]
+margin_right = 500.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 6 )
+text = "Control Configuration"
+align = 1
+
+[node name="Spacer" type="Control" parent="Margin/VBox"]
+margin_top = 22.0
+margin_right = 500.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Header" type="HBoxContainer" parent="Margin/VBox"]
+visible = false
+margin_top = 58.0
+margin_right = 500.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="ControlName" type="Label" parent="Margin/VBox/Header"]
+margin_top = 4.0
+margin_right = 45.0
+margin_bottom = 26.0
+size_flags_horizontal = 0
+text = "Name"
+align = 1
+
+[node name="ControlSet" type="Label" parent="Margin/VBox/Header"]
+margin_left = 242.0
+margin_top = 4.0
+margin_right = 302.0
+margin_bottom = 26.0
+size_flags_horizontal = 6
+text = "Setting"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Margin/VBox"]
+margin_top = 46.0
+margin_right = 500.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/ScrollContainer"]
+margin_right = 488.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ControlSetting" parent="Margin/VBox/ScrollContainer/VBox" instance=ExtResource( 4 )]
+margin_top = 0.0
+margin_right = 488.0
+margin_bottom = 37.0
+
+[node name="ControlSetting2" parent="Margin/VBox/ScrollContainer/VBox" instance=ExtResource( 4 )]
+margin_top = 37.0
+margin_right = 488.0
+margin_bottom = 74.0
+
+[node name="ControlSetting3" parent="Margin/VBox/ScrollContainer/VBox" instance=ExtResource( 4 )]
+margin_top = 74.0
+margin_right = 488.0
+margin_bottom = 111.0
+
+[node name="ControlSetting4" parent="Margin/VBox/ScrollContainer/VBox" instance=ExtResource( 4 )]
+margin_top = 111.0
+margin_right = 488.0
+margin_bottom = 148.0
+
+[node name="ControlSetting5" parent="Margin/VBox/ScrollContainer/VBox" instance=ExtResource( 4 )]
+margin_top = 148.0
+margin_right = 488.0
+margin_bottom = 185.0
+
+[node name="ControlSetting6" parent="Margin/VBox/ScrollContainer/VBox" instance=ExtResource( 4 )]
+margin_top = 185.0
+margin_right = 488.0
+margin_bottom = 222.0
+
+[node name="ControlSetting7" parent="Margin/VBox/ScrollContainer/VBox" instance=ExtResource( 4 )]
+margin_top = 222.0
+margin_right = 488.0
+margin_bottom = 259.0
+
+[node name="ControlSetting8" parent="Margin/VBox/ScrollContainer/VBox" instance=ExtResource( 4 )]
+margin_top = 259.0
+margin_right = 488.0
+margin_bottom = 296.0
+
+[node name="ControlSetting9" parent="Margin/VBox/ScrollContainer/VBox" instance=ExtResource( 4 )]
+margin_top = 296.0
+margin_right = 488.0
+margin_bottom = 333.0
+
+[node name="Spacer2" type="Control" parent="Margin/VBox"]
+margin_top = 318.0
+margin_right = 500.0
+margin_bottom = 342.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox"]
+margin_left = 109.0
+margin_top = 342.0
+margin_right = 390.0
+margin_bottom = 394.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="BackButton" type="Button" parent="Margin/VBox/HBox"]
+pause_mode = 2
+margin_right = 139.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 52 )
+size_flags_horizontal = 6
+size_flags_vertical = 10
+text = "Accept & return"
+
+[node name="HSpacer" type="Control" parent="Margin/VBox/HBox"]
+margin_left = 139.0
+margin_right = 155.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 16, 0 )
+
+[node name="ResetButton" type="Button" parent="Margin/VBox/HBox"]
+pause_mode = 2
+margin_left = 155.0
+margin_right = 281.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 52 )
+size_flags_horizontal = 6
+size_flags_vertical = 10
+text = "Reset defaults"
+
+[node name="VScrollBar" type="VScrollBar" parent="Margin/VBox"]
+margin_top = 394.0
+margin_right = 12.0
+margin_bottom = 400.0
+
+[node name="StopMouse" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlPopup" type="NinePatchRect" parent="StopMouse"]
+self_modulate = Color( 1, 1, 1, 0.784314 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -50.0
+margin_right = 160.0
+margin_bottom = 50.0
+theme = ExtResource( 3 )
+texture = ExtResource( 2 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="StopMouse/ControlPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="StopMouse/ControlPopup/Margin"]
+margin_right = 302.0
+margin_bottom = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="StopMouse/ControlPopup/Margin/VBox"]
+margin_top = 18.0
+margin_right = 302.0
+margin_bottom = 61.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 1 )
+text = "Press button now"
+align = 1

@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://menu/ControlSetting.gd" type="Script" id=1]
+
+[node name="ControlSetting" type="VBoxContainer"]
+margin_top = 58.0
+margin_right = 500.0
+margin_bottom = 89.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Separator" type="ColorRect" parent="."]
+margin_right = 500.0
+margin_bottom = 1.0
+rect_min_size = Vector2( 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlSetting" type="HBoxContainer" parent="."]
+margin_top = 5.0
+margin_right = 500.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 0, 36 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlName" type="Label" parent="ControlSetting"]
+margin_top = 11.0
+margin_right = 150.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 0
+text = "Control Name"
+clip_text = true
+
+[node name="ControlSet" type="Label" parent="ControlSetting"]
+margin_left = 229.0
+margin_top = 11.0
+margin_right = 347.0
+margin_bottom = 25.0
+size_flags_horizontal = 6
+text = "Left Mouse Button"
+align = 1
+
+[node name="ChangeButton" type="Button" parent="ControlSetting"]
+pause_mode = 2
+margin_left = 427.0
+margin_top = 5.0
+margin_right = 484.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 8
+size_flags_vertical = 6
+text = "change"
+
+[node name="Control" type="Control" parent="ControlSetting"]
+margin_left = 488.0
+margin_right = 500.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 12, 0 )
+size_flags_vertical = 11
+
+[connection signal="pressed" from="ControlSetting/ChangeButton" to="." method="_on_ChangeButton_pressed"]
