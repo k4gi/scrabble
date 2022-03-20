@@ -5,6 +5,7 @@ signal change_control(name, action)
 
 
 onready var Name = $ControlSetting/ControlName
+onready var Action = $ControlSetting/ControlSet
 
 
 var action_label = ""
@@ -18,6 +19,7 @@ func set_control(name, action):
 
 func _ready():
 	Name.set_text(action_label)
+	Action.set_text(action_name)
 
 
 func _on_ChangeButton_pressed():
