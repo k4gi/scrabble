@@ -72,8 +72,8 @@ func _on_change_control(node):
 
 
 func remap_control(event):
-	InputMap.action_erase_events( active_setting.action_name )
-	InputMap.action_add_event( active_setting.action_name, event )
+	InputMap.action_erase_events( control_list[active_setting.action_label] )
+	InputMap.action_add_event( control_list[active_setting.action_label], event )
 	active_setting.Action.set_text( get_event_string(event) )
 	active_setting = null
 	ControlPopup.set_visible(false)
