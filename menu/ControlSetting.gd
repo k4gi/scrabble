@@ -1,11 +1,12 @@
 extends VBoxContainer
 
 
-signal change_control(name, action)
+signal change_control(node)
 
 
 onready var Name = $ControlSetting/ControlName
 onready var Action = $ControlSetting/ControlSet
+onready var ChangeButton = $ControlSetting/ChangeButton
 
 
 var action_label = ""
@@ -22,5 +23,9 @@ func _ready():
 	Action.set_text(action_name)
 
 
+func set_button_disabled(boolean):
+	ChangeButton.set_disabled(boolean)
+
+
 func _on_ChangeButton_pressed():
-	emit_signal("change_control", Name.get_text(), action_name)
+	emit_signal("change_control", self)

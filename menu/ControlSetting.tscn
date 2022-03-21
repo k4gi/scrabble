@@ -53,6 +53,7 @@ margin_top = 5.0
 margin_right = 484.0
 margin_bottom = 31.0
 rect_min_size = Vector2( 0, 26 )
+focus_mode = 0
 size_flags_horizontal = 8
 size_flags_vertical = 6
 text = "change"

@@ -85,28 +85,28 @@ align = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="Margin/VBox"]
 margin_top = 46.0
 margin_right = 500.0
-margin_bottom = 318.0
+margin_bottom = 324.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="VBox" type="VBoxContainer" parent="Margin/VBox/ScrollContainer"]
 margin_right = 500.0
-margin_bottom = 272.0
+margin_bottom = 278.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Spacer2" type="Control" parent="Margin/VBox"]
-margin_top = 318.0
+margin_top = 324.0
 margin_right = 500.0
-margin_bottom = 342.0
+margin_bottom = 348.0
 rect_min_size = Vector2( 0, 24 )
 
 [node name="HBox" type="HBoxContainer" parent="Margin/VBox"]
 margin_left = 109.0
-margin_top = 342.0
+margin_top = 348.0
 margin_right = 390.0
-margin_bottom = 394.0
+margin_bottom = 400.0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
@@ -134,11 +134,6 @@ rect_min_size = Vector2( 0, 52 )
 size_flags_horizontal = 6
 size_flags_vertical = 10
 text = "Reset defaults"
-
-[node name="VScrollBar" type="VScrollBar" parent="Margin/VBox"]
-margin_top = 394.0
-margin_right = 12.0
-margin_bottom = 400.0
 
 [node name="StopMouse" type="Control" parent="."]
 visible = false
@@ -195,3 +190,113 @@ size_flags_vertical = 6
 custom_fonts/font = ExtResource( 1 )
 text = "Press button now"
 align = 1
+
+[node name="StopMouse2" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResetPopup" type="NinePatchRect" parent="StopMouse2"]
+self_modulate = Color( 1, 1, 1, 0.784314 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -70.0
+margin_right = 160.0
+margin_bottom = 70.0
+theme = ExtResource( 3 )
+texture = ExtResource( 2 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="StopMouse2/ResetPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="StopMouse2/ResetPopup/Margin"]
+margin_right = 300.0
+margin_bottom = 120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="StopMouse2/ResetPopup/Margin/VBox"]
+margin_left = 3.0
+margin_right = 296.0
+margin_bottom = 43.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 1 )
+text = "Reset all controls"
+align = 1
+
+[node name="Label2" type="Label" parent="StopMouse2/ResetPopup/Margin/VBox"]
+margin_left = 96.0
+margin_top = 45.0
+margin_right = 203.0
+margin_bottom = 67.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "Are you sure?"
+align = 1
+
+[node name="Spacer" type="Control" parent="StopMouse2/ResetPopup/Margin/VBox"]
+margin_top = 70.0
+margin_right = 300.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="HBox" type="HBoxContainer" parent="StopMouse2/ResetPopup/Margin/VBox"]
+margin_left = 110.0
+margin_top = 94.0
+margin_right = 189.0
+margin_bottom = 120.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ResetYesButton" type="Button" parent="StopMouse2/ResetPopup/Margin/VBox/HBox"]
+pause_mode = 2
+margin_right = 35.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "Yes"
+
+[node name="HSpacer" type="Control" parent="StopMouse2/ResetPopup/Margin/VBox/HBox"]
+margin_left = 35.0
+margin_right = 51.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 16, 0 )
+
+[node name="ResetNoButton" type="Button" parent="StopMouse2/ResetPopup/Margin/VBox/HBox"]
+pause_mode = 2
+margin_left = 51.0
+margin_right = 79.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 0, 26 )
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "No"
+
+[connection signal="pressed" from="Margin/VBox/HBox/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Margin/VBox/HBox/ResetButton" to="." method="_on_ResetButton_pressed"]
+[connection signal="pressed" from="StopMouse2/ResetPopup/Margin/VBox/HBox/ResetYesButton" to="." method="_on_ResetYesButton_pressed"]
+[connection signal="pressed" from="StopMouse2/ResetPopup/Margin/VBox/HBox/ResetNoButton" to="." method="_on_ResetNoButton_pressed"]

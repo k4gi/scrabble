@@ -84,7 +84,7 @@ func generate_level(level_tilemap):
 	#get the autotiling working nice
 	level_tilemap.update_bitmask_region(level_tilemap.get_used_rect().position, level_tilemap.get_used_rect().end)
 	#new item spawning down here
-	spawn_desired_fuel_cans(level_tilemap)
+	#spawn_desired_fuel_cans(level_tilemap) #it doesn't work!
 	#should probably get out of the way of the real level
 	queue_free()
 
@@ -113,12 +113,12 @@ func place_block(level_tilemap, block, coords, variant):
 				pass
 			"room":
 				pass
-#				if !special and tile_id == FLOOR_ID and \
-#					tile.x != 0 and tile.x != BLOCK_SIZE[0]-1 and \
-#					tile.y != 0 and tile.y != BLOCK_SIZE[1]-1 and \
-#					randi()%FUEL_CAN_CHANCE == 0:
-#						emit_signal("spawn_fuel_can", level_tilemap.map_to_world(Vector2(tile_x, tile_y))*level_tilemap.get_scale())
-#						special = true
+				if !special and tile_id == FLOOR_ID and \
+					tile.x != 0 and tile.x != BLOCK_SIZE[0]-1 and \
+					tile.y != 0 and tile.y != BLOCK_SIZE[1]-1 and \
+					randi()%FUEL_CAN_CHANCE == 0:
+						emit_signal("spawn_fuel_can", level_tilemap.map_to_world(Vector2(tile_x, tile_y))*level_tilemap.get_scale())
+						special = true
 
 
 func spawn_desired_fuel_cans(level_tilemap):

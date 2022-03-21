@@ -13,7 +13,11 @@ var zombies_killed = 0
 
 onready var Level = preload("res://levels/GeneratedLevel.tscn")
 
-onready var MainMenu = $CanvasLayer/NinePatchRect
+
+onready var MainMenu = $CanvasLayer/MainMenu
+onready var ControlsMenu = $CanvasLayer/ControlsMenu
+
+
 var CurrentLevel
 
 
@@ -28,6 +32,7 @@ func _ready():
 
 func _on_PlayButton_pressed():
 	MainMenu.queue_free()
+	ControlsMenu.queue_free()
 	load_level()
 
 
@@ -54,6 +59,17 @@ func _on_lose_game():
 
 func _on_zombie_killed():
 	zombies_killed += 1
+
+
+func _on_ControlsButton_pressed():
+	MainMenu.set_visible(false)
+	ControlsMenu.set_visible(true)
+
+
+func _on_ControlsMenu_close_menu():
+	ControlsMenu.set_visible(false)
+	MainMenu.set_visible(true)
+
 
 # here I am thinking again.
 # haven't touched this project in 7 months but I want to use it to build my 7 Day Roguelike
@@ -107,5 +123,4 @@ func _on_zombie_killed():
 # because there's going to be a bunch of zombies locked up inside
 # and because the noise of breaking open the door is going to attract them from elsewhere
 # like, behind you and down the hall to your right and all that. maybe it spawns more.
-
 
