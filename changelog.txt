@@ -1,2 +1,7 @@
+version 1.2
+	add a control remapping menu to the start screen
+	nerf the knife - can now only stab one zombie at a time
+
+
 version 1.1
 	fix a bug that caused a crash when generating a larger level

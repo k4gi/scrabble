@@ -30,6 +30,8 @@ var move_vec = Vector2.ZERO
 
 var health = 10
 
+var knife_cooldown = false
+
 var is_active = true
  
 func _ready():
@@ -86,6 +88,7 @@ func _unhandled_input(event):
 
 func stab():
 	if !knife.is_visible():
+		knife_cooldown = false
 		knife.set_visible(true)
 		knife.set_monitoring(true)
 		sprite.play("stab")
@@ -121,7 +124,8 @@ func damage_player(damage):
 
 
 func _on_Knife_body_entered(body):
-	if body.has_method("bullet_hit"):
+	if body.has_method("bullet_hit") and not knife_cooldown:
+		knife_cooldown = true
 		body.bullet_hit(KNIFE_DAMAGE)
 
 
