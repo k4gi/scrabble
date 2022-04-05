@@ -25,6 +25,8 @@ onready var shape = $CollisionShape2D
 onready var sound_hurt = $HurtSound
 onready var sound_gun = $GunSound
 onready var sound_knife = $KnifeSound
+onready var light = $Light2D
+
 
 var move_vec = Vector2.ZERO
 
@@ -151,3 +153,7 @@ func die():
 	is_active = false
 	shape.set_deferred("disabled", true)
 	sprite.play("die")
+
+
+func set_light_enabled(boolean):
+	light.set_enabled(boolean)
