@@ -6,8 +6,7 @@ var score = 1
 
 func bullet_hit(_damage):
 	if active:
-		print("target hit!")
-		EventJug.emit_signal("score_add", score)
+		#EventJug.emit_signal("score_add", score)
 		active = false
 		queue_free()
 	

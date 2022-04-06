@@ -6,6 +6,7 @@
 
 extends KinematicBody2D
  
+
 const MOVE_SPEED = 300
 
 const BULLET_VELOCITY = 1000
@@ -14,6 +15,10 @@ const Bullet = preload("res://player/TopDownBullet.tscn")
 const KNIFE_DAMAGE = 5
 const GUN_DAMAGE = 2
  
+const LIGHT_CONE = preload("res://assets/weirdcone.png")
+const LIGHT_FULL = preload("res://assets/weirdcone_full.png")
+
+
 onready var raycast = $RayCast2D
 onready var gun = $Gun
 onready var sprite = $AnimatedSprite
@@ -157,3 +162,11 @@ func die():
 
 func set_light_enabled(boolean):
 	light.set_enabled(boolean)
+
+
+func set_light_mode(string):
+	match string:
+		"cone":
+			light.set_texture(LIGHT_CONE)
+		"full":
+			light.set_texture(LIGHT_FULL)
