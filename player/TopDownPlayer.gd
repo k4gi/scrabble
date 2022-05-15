@@ -26,6 +26,7 @@ onready var knife = $Knife
 onready var interact_area = $Interact
 onready var prompt = $TalkPrompt
 onready var prompt_pos = prompt.get_position()
+onready var promptlabel = $TalkPrompt/TalkLabel
 onready var shape = $CollisionShape2D
 onready var sound_hurt = $HurtSound
 onready var sound_gun = $GunSound
@@ -170,3 +171,7 @@ func set_light_mode(string):
 			light.set_texture(LIGHT_CONE)
 		"full":
 			light.set_texture(LIGHT_FULL)
+
+
+func _on_TalkLabel_resized():
+	prompt._set_size(promptlabel.get_size()) #or soomething. needs to stay centered

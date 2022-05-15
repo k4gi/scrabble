@@ -135,7 +135,6 @@ shape = SubResource( 11 )
 shape = SubResource( 12 )
 
 [node name="TalkPrompt" type="NinePatchRect" parent="."]
-visible = false
 margin_left = -10.0
 margin_top = 32.0
 margin_right = 10.0
@@ -145,11 +144,8 @@ patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="TalkPrompt"]
+[node name="TalkLabel" type="Label" parent="TalkPrompt"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 4 )
@@ -169,3 +165,4 @@ stream = ExtResource( 8 )
 [connection signal="body_entered" from="Knife" to="." method="_on_Knife_body_entered"]
 [connection signal="area_entered" from="Interact" to="." method="_on_Interact_area_entered"]
 [connection signal="area_exited" from="Interact" to="." method="_on_Interact_area_exited"]
+[connection signal="resized" from="TalkPrompt/TalkLabel" to="." method="_on_TalkLabel_resized"]
